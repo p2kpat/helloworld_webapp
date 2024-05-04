@@ -1,0 +1,9 @@
+---
+- hosts: webservers
+  gather_facts: false
+  #  become: true
+  tasks:
+    - name: Change the working directory to somedir/ before executing the command.
+      shell: mvn clean package
+      args:
+        chdir: ~/helloworld_webapp/

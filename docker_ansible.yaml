@@ -2,15 +2,15 @@
 - hosts: webservers
   connection: local
   tasks:
-    - name: Debug: List contents of the directory
+    - name: "Debug: List contents of the directory"
       shell: ls -l /var/lib/jenkins/workspace/ansible_playbook_project_test/
-         
-    - name: Change the working directory provided to build docker image using Jenkins Dockerfile
+
+    - name: "Change the working directory provided to build docker image using Jenkins Dockerfile"
       shell: docker build -t my_auto_image -f jenkinsDockerfile .
       args:
         chdir: /var/lib/jenkins/workspace/ansible_playbook_project_test/target/
-      
-    - name: start docker container
+
+    - name: "Start docker container"
       docker_container:
         name: my_auto_deployed_app
         image: my_auto_image

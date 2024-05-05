@@ -1,6 +1,5 @@
 ---
 - hosts: webservers
-  connection: local
   tasks:
     - name: "Debug: List contents of the directory"
       shell: ls -l /var/lib/jenkins/workspace/ansible_playbook_project_test/

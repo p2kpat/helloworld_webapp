@@ -2,41 +2,18 @@
 - hosts: localhost
   connection: local
   gather_facts: false
-  #  become: true
-  #  become_method: sudo
   tasks:
-          #    - name: Change the working directory to create demo.war using the pom.xml
-      #      shell: chmod 777 /var/lib/jenkins/workspace/ansible_playbook_project_test/
-      #      args:
-              #        chdir: /var/lib/jenkins/workspace/ansible_playbook_project_test/
-
     - name: Change the working directory to create demo.war using the pom.xml
       shell: mvn clean package
       args:
         chdir: /var/lib/jenkins/workspace/ansible_playbook_project_test/
 
-        #    - name: "Debug: List contents of the directory"
-        #      shell: ls -l /var/lib/jenkins/workspace/ansible_playbook_project_test/
-        #    - name: copy .war file to docker context folder
-      #      copy:
-              #        src: /var/lib/jenkins/workspace/ansible_playbook_project_test/target/demo.war
-        #        dest: /usr/local/tomcat/webapps/demo.war
-        #    
-        #    - name: copy jenkinsDocker file to docker context folder
-        #      copy:
-        #        src: /var/lib/jenkins/workspace/ansible_playbook_project_test/target/jenkinsDockerfile
-        #        dest: /home/labsuser/.docker/context
-
     - name: Build Docker image using tomcat repo
       docker_image:
         name: my_auto_image
-        dockerfile:
-         state: present
-         build: /var/lib/jenkins/workspace/ansible_playbook_project_test/target/jenkinsDockerfile
+        dockerfile: /var/lib/jenkins/workspace/ansible_playbook_project_test/target/jenkinsDockerfile
 
-
-
-        - name: copy .war file to docker context folder
+    - name: Copy .war file to Docker context folder
       copy:
         src: /var/lib/jenkins/workspace/ansible_playbook_project_test/target/demo.war
         dest: /usr/local/tomcat/webapps/demo.war

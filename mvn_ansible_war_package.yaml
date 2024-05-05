@@ -4,7 +4,7 @@
   gather_facts: false
   #  become: true
   tasks:
-    - name: Change the working directory to somedir/ before executing the command.
-      shell: mvn clean package
+    - name: Change the working directory to create demo.war using the pom.xml
+      shell: sudo mvn clean package
       args:
         chdir: /var/lib/jenkins/workspace/ansible_playbook_project_test/

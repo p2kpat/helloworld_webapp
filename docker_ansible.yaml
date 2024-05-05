@@ -5,7 +5,7 @@
     - name: Change the working directory provided to build docker image using Jenkins Dockerfile
       shell: docker build -t my_auto_image -f jenkinsDockerfile .
       args:
-        chdir: /var/lib/jenkins/workspace/ansible_playbook_project_test/
+        chdir: /var/lib/jenkins/workspace/ansible_playbook_project_test/target/
       
     - name: start docker container
       docker_container:

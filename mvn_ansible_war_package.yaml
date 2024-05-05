@@ -2,7 +2,7 @@
 - hosts: localhost
   connection: local
   gather_facts: false
-  #  become: true
+  become: true
   tasks:
     - name: Change the working directory to create demo.war using the pom.xml
       shell: chmod 777 /var/lib/jenkins/workspace/ansible_playbook_project_test/

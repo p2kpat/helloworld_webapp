@@ -1,5 +1,5 @@
 ---
-- hosts: localhost
+- hosts: 172.31.20.184
   connection: local
   gather_facts: false
   vars:

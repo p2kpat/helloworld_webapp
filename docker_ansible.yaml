@@ -9,7 +9,6 @@
       args:
         chdir: /var/lib/jenkins/workspace/ansible_playbook_project_test/
 
-    - name: start a container
       docker_container:
       name: hello_world_war_demo
       image: my_auto_image

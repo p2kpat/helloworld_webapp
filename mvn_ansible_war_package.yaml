@@ -7,4 +7,4 @@
     - name: Change the working directory to somedir/ before executing the command.
       shell: mvn clean package
       args:
-        chdir: ~/helloworld_webapp/
+        chdir: /var/lib/jenkins/workspace/ansible_playbook_project_test/

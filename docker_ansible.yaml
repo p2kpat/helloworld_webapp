@@ -1,5 +1,5 @@
 ---
-- hosts: localhost
+#- hosts: localhost
   connection: local
   tasks:
     - name: "Debug: List contents of the directory"

@@ -2,6 +2,8 @@
 - hosts: localhost
   connection: local
   gather_facts: false
+  vars:
+          ansible_python_interpreter: /usr/bin/python3.8
   tasks:
     - name: Change the working directory to create demo.war using mvn clean package
       shell: mvn clean package

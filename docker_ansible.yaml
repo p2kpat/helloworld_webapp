@@ -15,6 +15,5 @@
         name: my_auto_deployed_app
         image: my_auto_image
         state: started
-        recreate: yes
+        #        recreate: yes
         restart: yes
-        #

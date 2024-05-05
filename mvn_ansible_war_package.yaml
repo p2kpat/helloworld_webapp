@@ -3,7 +3,7 @@
   connection: local
   gather_facts: false
   tasks:
-    - name: Change the working directory to create demo.war using the pom.xml
+    - name: Change the working directory to create demo.war using mvnclean_package
       shell: mvn clean package
       args:
         chdir: /var/lib/jenkins/workspace/ansible_playbook_project_test/
@@ -11,7 +11,8 @@
     - name: Build Docker image using tomcat repo
       docker_image:
         name: my_auto_image
-        build dockerfile: /var/lib/jenkins/workspace/ansible_playbook_project_test/target/jenkinsDockerfile
+        path: /var/lib/jenkins/workspace/ansible_playbook_project_test/target/
+        dockerfile: jenkinsDockerfile
 
     - name: Copy .war file to Docker context folder
       copy:

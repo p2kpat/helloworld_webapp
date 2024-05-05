@@ -3,22 +3,20 @@
   connection: local
   gather_facts: false
   tasks:
-    - name: Change the working directory to create demo.war using mvnclean_package
+    - name: Change the working directory to create demo.war using mvn clean package
       shell: mvn clean package
       args:
         chdir: /var/lib/jenkins/workspace/ansible_playbook_project_test/
-    
-    - name: start tomcat container
-      docker_container
-         name: my_app_container
-         image: tomcat:latest
-         state: started
-         ports:
+
+    - name: Start Tomcat container
+      docker_container:
+        name: my_app_container
+        image: tomcat:latest
+        state: started
+        ports:
           - "8888:8080"
-         detach: yes
-         tty: yes
-
-
+        detach: yes
+        tty: yes
 
     - name: Copy .war file to Docker context folder
       copy:

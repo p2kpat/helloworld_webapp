@@ -9,7 +9,6 @@
       
     - name: start docker container
       docker_container:
-      name: hello_world_war_demo
       image: my_auto_image
       state: started
       restart: true

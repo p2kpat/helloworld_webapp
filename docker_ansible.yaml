@@ -9,9 +9,8 @@
       
     - name: start docker container
       docker_container:
-      name: my_auto_deployed_app
-      image: my_auto_image
-      state: started
-      recreate: yes
-      restart: yes
----
+        name: my_auto_deployed_app
+        image: my_auto_image
+        state: started
+        recreate: yes
+        restart: yes

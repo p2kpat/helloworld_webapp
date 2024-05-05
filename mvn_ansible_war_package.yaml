@@ -1,6 +1,6 @@
 ---
-- hosts: localhost
-  connection: local
+- hosts: webservers
+  # connection: local
   gather_facts: false
   #  become: true
   tasks:

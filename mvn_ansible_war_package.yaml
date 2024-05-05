@@ -17,17 +17,26 @@
 
         #    - name: "Debug: List contents of the directory"
         #      shell: ls -l /var/lib/jenkins/workspace/ansible_playbook_project_test/
-    - name: copy .war file to docker context folder
-      copy:
-        src: /var/lib/jenkins/workspace/ansible_playbook_project_test/target/demo.war
-        dest: /home/labsuser/.docker/context
-    
-    - name: copy jenkinsDocker file to docker context folder
-      copy:
-        src: /var/lib/jenkins/workspace/ansible_playbook_project_test/target/jenkinsDockerfile
-        dest: /home/labsuser/.docker/context
+        #    - name: copy .war file to docker context folder
+      #      copy:
+              #        src: /var/lib/jenkins/workspace/ansible_playbook_project_test/target/demo.war
+        #        dest: /usr/local/tomcat/webapps/demo.war
+        #    
+        #    - name: copy jenkinsDocker file to docker context folder
+        #      copy:
+        #        src: /var/lib/jenkins/workspace/ansible_playbook_project_test/target/jenkinsDockerfile
+        #        dest: /home/labsuser/.docker/context
 
-    - name: Build Docker image
+    - name: Build Docker image using tomcat repo
       docker_image:
         name: my_auto_image
-        path: ~/.docker/build/context/
+        dockerfile:
+         state: present
+         build: /var/lib/jenkins/workspace/ansible_playbook_project_test/target/jenkinsDockerfile
+
+
+
+        - name: copy .war file to docker context folder
+      copy:
+        src: /var/lib/jenkins/workspace/ansible_playbook_project_test/target/demo.war
+        dest: /usr/local/tomcat/webapps/demo.war

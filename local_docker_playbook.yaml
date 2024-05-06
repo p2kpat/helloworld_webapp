@@ -5,11 +5,6 @@
   vars:
     ansible_python_interpreter: /usr/bin/python3.8
   tasks:
-    - name: Change the working directory to create demo.war using mvn clean package
-      shell: mvn clean package
-      args:
-        chdir: /var/lib/jenkins/workspace/ansible_playbook_project_test/
-
     - name: Start Tomcat container
       docker_container:
         name: my_app_container
@@ -22,5 +17,5 @@
 
     - name: Copy .war file to Docker context folder
       copy:
-        src: /var/lib/jenkins/workspace/ansible_playbook_project_test/target/demo.war
+        src: /home/labsuser/helloworld_webapp/target/demo.war
         dest: /usr/local/tomcat/webapps/demo.war

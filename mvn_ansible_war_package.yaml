@@ -10,17 +10,17 @@
       args:
         chdir: /var/lib/jenkins/workspace/ansible_playbook_project_test/
 
-    - name: Start Tomcat container
-      docker_container:
-        name: my_app_container
-        image: tomcat:latest
-        state: started
-        ports:
-          - "8888:8080"
-        detach: yes
-        tty: yes
-        volumes:
-          - /var/lib/jenkins/workspace/ansible_playbook_project_test/target/demo.war:/usr/local/tomcat/webapps/demo.war
+        #    - name: Start Tomcat container
+        #      docker_container:
+        #        name: my_app_container
+        #        image: tomcat:latest
+        #        state: started
+        #        ports:
+        #          - "8888:8080"
+        #        detach: yes
+        #        tty: yes
+        #        volumes:
+        #          - /var/lib/jenkins/workspace/ansible_playbook_project_test/target/demo.war:/usr/local/tomcat/webapps/demo.war
         #    - name: Fetch .war file from local machine
         #      fetch:
         #        src: /home/labsuser/helloworld_webapp/target/demo.war

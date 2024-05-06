@@ -20,13 +20,23 @@
         detach: yes
         tty: yes
 
-    - name: Create Tomcat webapps directory if it doesn't exist
-      file:
-        path: /usr/local/tomcat/webapps
-        state: directory
-      become: yes
+    - name: Fetch .war file from local machine
+      fetch:
+        src: /home/labsuser/helloworld_webapp/target/demo.war
+        dest: /tmp/demo.war
+        flat: yes
 
-    - name: Copy .war file to Docker context folder
+    - name: Copy .war file to Tomcat webapps directory
       copy:
-        src: /var/lib/jenkins/workspace/ansible_playbook_project_test/target/demo.war
+        src: /tmp/demo.war
         dest: /usr/local/tomcat/webapps/demo.war
+        #    - name: Create Tomcat webapps directory if it doesn't exist
+        #      file:
+        #        path: /usr/local/tomcat/webapps
+        #        state: directory
+        #      become: yes
+        
+        #    - name: Copy .war file to Docker context folder
+        #      copy:
+        #        src: /var/lib/jenkins/workspace/ansible_playbook_project_test/target/demo.war
+        #        dest: /usr/local/tomcat/webapps/demo.war

@@ -19,17 +19,18 @@
           - "8888:8080"
         detach: yes
         tty: yes
+        volumes:
+          - /home/labsuser/helloworld_webapp/target/demo.war:/usr/local/tomcat/webapps/demo.war
+        #    - name: Fetch .war file from local machine
+        #      fetch:
+        #        src: /home/labsuser/helloworld_webapp/target/demo.war
+        #        dest: /tmp/demo.war
+        #        flat: yes
 
-    - name: Fetch .war file from local machine
-      fetch:
-        src: /home/labsuser/helloworld_webapp/target/demo.war
-        dest: /tmp/demo.war
-        flat: yes
-
-    - name: Copy .war file to Tomcat webapps directory
-      copy:
-        src: /tmp/demo.war
-        dest: /usr/local/tomcat/webapps/demo.war
+        #    - name: Copy .war file to Tomcat webapps directory
+        #      copy:
+        #        src: /tmp/demo.war
+        #        dest: /usr/local/tomcat/webapps/demo.war
         #    - name: Create Tomcat webapps directory if it doesn't exist
         #      file:
         #        path: /usr/local/tomcat/webapps

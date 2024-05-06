@@ -20,7 +20,7 @@
         detach: yes
         tty: yes
         volumes:
-          - /home/labsuser/helloworld_webapp/target/demo.war:/usr/local/tomcat/webapps/demo.war
+          - /var/lib/jenkins/workspace/ansible_playbook_project_test/target/demo.war:/usr/local/tomcat/webapps/demo.war
         #    - name: Fetch .war file from local machine
         #      fetch:
         #        src: /home/labsuser/helloworld_webapp/target/demo.war

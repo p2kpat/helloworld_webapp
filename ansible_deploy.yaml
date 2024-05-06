@@ -3,7 +3,7 @@
   gather_facts: false
   vars:
     ansible_python_interpreter: /usr/bin/python3.8
-	
+   
     - name: Start Tomcat container
       docker_container:
         name: my_app_container

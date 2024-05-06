@@ -20,6 +20,12 @@
         detach: yes
         tty: yes
 
+    - name: Create Tomcat webapps directory if it doesn't exist
+      file:
+        path: /usr/local/tomcat/webapps
+        state: directory
+
+
     - name: Copy .war file to Docker context folder
       copy:
         src: /var/lib/jenkins/workspace/ansible_playbook_project_test/target/demo.war
